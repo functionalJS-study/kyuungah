@@ -10,6 +10,14 @@ export const reduce = curry((f, acc, iter) => {
     iter = acc[Symbol.iterator]()
     acc = iter.next().value
   }
+  // else {
+  //   iter = iter[Symbol.iterator]()
+  // }
+  // let cur
+  // while (!(cur = iter.next()).done) {
+  //   const a = cur.value
+  //   acc = f(acc, a)
+  // }
   for (const a of iter) {
     acc = f(acc, a)
   }
@@ -20,6 +28,15 @@ export const go = (...args) => reduce((a, f) => f(a), args)
 
 export const take = curry((limit, iter) => {
   let res = []
+
+  // iter = iter[Symbol.iterator]()
+  // let cur
+  // while (!(cur = iter.next()).done) {
+  //   const a = cur.value
+  //   res.push(a)
+  //   if (res.length == limit) return res
+  // }
+
   for (const a of iter) {
     res.push(a)
     if (res.length == limit) return res
