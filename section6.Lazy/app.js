@@ -1,8 +1,8 @@
 import { go, take, log } from './helper.js'
-import { map, filter, range } from './immediately.js'
+import { map, filter, range } from './strict.js'
 import { L } from './lazy.js'
 
-// immediately
+// strict
 go(
   range(10),
   map((n) => n + 10),
