@@ -23,7 +23,7 @@ export const reduce = curry((f, acc, iter) => {
   return acc
 })
 
-export const go = (...args) => console.log(...args)
+export const go = (...args) => reduce((a, f) => f(a), args)
 
 export const take = curry((limit, iter) => {
   let res = []
@@ -42,11 +42,6 @@ export const take = curry((limit, iter) => {
   // }
   return res
 })
-
-export const pipe =
-  (f, ...fs) =>
-  (...as) =>
-    go(f(...as), ...fs)
 
 export function test(name, time, f) {
   console.time(name)
